@@ -40,11 +40,17 @@ function App() {
   };
 
   const removeFavorite = (id) => {
+    const removedItem = visibleAuctions.find((item) => item.id === id);
+
     setFavoriteIds((current) => {
       const next = new Set(current);
       next.delete(id);
       return next;
     });
+
+    if (removedItem) {
+      toast.info(`${removedItem.title} removed from favorites`);
+    }
   };
 
   const formatCurrency = (amount) =>
@@ -58,7 +64,10 @@ function App() {
     <div className="min-h-screen bg-slate-100 text-slate-800">
       <header className="border-b border-slate-200 bg-white/95 backdrop-blur">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 sm:px-6">
-          <a href="#" className="text-xl font-extrabold tracking-tight">
+          <a
+            href="#"
+            className="text-lg font-extrabold tracking-tight sm:text-xl"
+          >
             Auction<span className="text-amber-500">Gallery</span>
           </a>
 
@@ -106,6 +115,33 @@ function App() {
             </div>
           </div>
         </div>
+
+        <nav className="mx-auto flex max-w-6xl items-center gap-2 overflow-x-auto px-4 pb-3 text-xs font-medium text-slate-600 md:hidden sm:px-6">
+          <a
+            href="#"
+            className="rounded-full border border-slate-300 px-3 py-1.5 whitespace-nowrap hover:bg-slate-100"
+          >
+            Home
+          </a>
+          <a
+            href="#auctions"
+            className="rounded-full border border-slate-300 px-3 py-1.5 whitespace-nowrap hover:bg-slate-100"
+          >
+            Auctions
+          </a>
+          <a
+            href="#"
+            className="rounded-full border border-slate-300 px-3 py-1.5 whitespace-nowrap hover:bg-slate-100"
+          >
+            Categories
+          </a>
+          <a
+            href="#"
+            className="rounded-full border border-slate-300 px-3 py-1.5 whitespace-nowrap hover:bg-slate-100"
+          >
+            How to works
+          </a>
+        </nav>
       </header>
 
       <section
@@ -131,7 +167,7 @@ function App() {
 
       <main
         id="auctions"
-        className="mx-auto w-full max-w-6xl px-4 py-10 sm:px-6 sm:py-14"
+        className="mx-auto w-full max-w-6xl px-4 py-8 sm:px-6 sm:py-14"
       >
         <div className="mb-6 sm:mb-8">
           <h2 className="font-display text-2xl font-bold text-slate-700 sm:text-3xl">
@@ -144,7 +180,62 @@ function App() {
 
         <div className="grid grid-cols-1 gap-4 lg:grid-cols-[2fr,1fr]">
           <section className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
-            <div className="overflow-x-auto">
+            <div className="divide-y divide-slate-100 md:hidden">
+              {visibleAuctions.map((item) => {
+                const isFavorite = favoriteIds.has(item.id);
+
+                return (
+                  <article key={item.id} className="space-y-3 p-4">
+                    <div className="flex items-start gap-3">
+                      <img
+                        src={item.image}
+                        alt={item.title}
+                        className="h-14 w-14 shrink-0 rounded-md object-cover"
+                      />
+                      <div className="min-w-0">
+                        <p className="text-sm font-semibold text-slate-700">
+                          {item.title}
+                        </p>
+                        <p className="line-clamp-2 text-xs text-slate-500">
+                          {item.description}
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className="grid grid-cols-2 gap-2 text-xs">
+                      <div className="rounded-lg bg-slate-50 p-2">
+                        <p className="text-slate-500">Current Bid</p>
+                        <p className="font-semibold text-slate-700">
+                          {formatCurrency(item.currentBidPrice)}
+                        </p>
+                      </div>
+                      <div className="rounded-lg bg-slate-50 p-2">
+                        <p className="text-slate-500">Time Left</p>
+                        <p className="font-semibold text-slate-700">
+                          {item.timeLeft}
+                        </p>
+                      </div>
+                    </div>
+
+                    <button
+                      onClick={() => addFavorite(item)}
+                      disabled={isFavorite}
+                      className={`cursor-pointer bg-transparent p-0 text-2xl leading-none transition-colors duration-200 disabled:pointer-events-auto disabled:cursor-not-allowed disabled:text-red-500 disabled:hover:text-red-500 ${
+                        isFavorite
+                          ? "text-red-500"
+                          : "text-slate-400 hover:text-red-500"
+                      }`}
+                      aria-label="Add to favorite"
+                      title="Add to favorite"
+                    >
+                      ♥
+                    </button>
+                  </article>
+                );
+              })}
+            </div>
+
+            <div className="hidden overflow-x-auto md:block">
               <table className="table">
                 <thead>
                   <tr className="text-xs uppercase tracking-wide text-slate-500">
@@ -206,7 +297,7 @@ function App() {
             </div>
           </section>
 
-          <aside className="rounded-2xl border border-slate-400 bg-white p-5 shadow-sm">
+          <aside className="rounded-2xl border border-slate-400 bg-white p-4 shadow-sm sm:p-5">
             <h3 className="mb-4 text-xl font-bold text-slate-700">
               Favorite Items
             </h3>
