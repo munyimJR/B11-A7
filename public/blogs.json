@@ -1,0 +1,56 @@
+[
+	{
+		"id": 1,
+		"title": "Vintage Leica M3 Camera",
+		"description": "A classic 35mm rangefinder camera known for precision craftsmanship.",
+		"currentBidPrice": 2850,
+		"timeLeft": "2 Days left",
+		"bidsCount": 12,
+		"image": "https://picsum.photos/id/250/400/300"
+	},
+	{
+		"id": 2,
+		"title": "1965 Gibson SG Standard Electric Guitar",
+		"description": "Legendary vintage guitar with original hardware and rich tonal character.",
+		"currentBidPrice": 3250,
+		"timeLeft": "2 Days left",
+		"bidsCount": 18,
+		"image": "https://picsum.photos/id/145/400/300"
+	},
+	{
+		"id": 3,
+		"title": "Original Apple Macintosh 128K (1984)",
+		"description": "Historic first-generation Macintosh computer in collectible condition.",
+		"currentBidPrice": 4950,
+		"timeLeft": "3 Days left",
+		"bidsCount": 9,
+		"image": "https://picsum.photos/id/0/400/300"
+	},
+	{
+		"id": 4,
+		"title": "Rolex Submariner 16610",
+		"description": "Iconic Swiss dive watch with stainless steel bracelet and date feature.",
+		"currentBidPrice": 6800,
+		"timeLeft": "1 Day left",
+		"bidsCount": 25,
+		"image": "https://picsum.photos/id/201/400/300"
+	},
+	{
+		"id": 5,
+		"title": "First Edition The Great Gatsby by F. Scott Fitzgerald",
+		"description": "Rare first-edition print of a timeless American literary masterpiece.",
+		"currentBidPrice": 1250,
+		"timeLeft": "4 Days left",
+		"bidsCount": 7,
+		"image": "https://picsum.photos/id/24/400/300"
+	},
+	{
+		"id": 6,
+		"title": "Mid-Century Modern Eames Lounge Chair",
+		"description": "Authentic lounge chair featuring iconic curves and premium materials.",
+		"currentBidPrice": 2950,
+		"timeLeft": "2 Days left",
+		"bidsCount": 14,
+		"image": "https://picsum.photos/id/175/400/300"
+	}
+]
