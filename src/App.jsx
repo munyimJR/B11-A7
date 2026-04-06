@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import bannerImage from "./assets/Banner-min.jpg";
 
 function App() {
   const [auctions, setAuctions] = useState([]);
@@ -89,7 +90,10 @@ function App() {
         </div>
       </header>
 
-      <section className="hero-banner relative overflow-hidden">
+      <section
+        className="hero-banner relative overflow-hidden"
+        style={{ backgroundImage: `url(${bannerImage})` }}
+      >
         <div className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/45 to-transparent"></div>
         <div className="relative mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-24">
           <div className="max-w-xl space-y-4 text-white">
