@@ -78,8 +78,26 @@ function App() {
           </nav>
 
           <div className="flex items-center gap-3">
-            <button className="btn btn-ghost btn-circle btn-sm text-slate-500">
-              <span className="text-base">🔔</span>
+            <button
+              className="relative inline-flex h-9 w-9 items-center justify-center rounded-full border border-slate-300 text-slate-600 transition-colors duration-200 hover:border-slate-400 hover:bg-slate-100"
+              aria-label="Notifications"
+              title="Notifications"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.8"
+                className="h-5 w-5"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M14.857 17.082a23.848 23.848 0 0 1-5.714 0M18 8a6 6 0 1 0-12 0c0 3.314-1.208 5.21-2.023 6.235a1 1 0 0 0 .783 1.64h14.48a1 1 0 0 0 .783-1.64C19.208 13.21 18 11.314 18 8Z"
+                />
+              </svg>
+              <span className="absolute right-2 top-2 h-2 w-2 rounded-full bg-blue-500"></span>
             </button>
             <div className="avatar placeholder">
               <div className="h-8 w-8 rounded-full bg-orange-200 text-xs font-bold text-slate-700">
@@ -188,13 +206,13 @@ function App() {
             </div>
           </section>
 
-          <aside className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
+          <aside className="rounded-2xl border border-slate-400 bg-white p-5 shadow-sm">
             <h3 className="mb-4 text-xl font-bold text-slate-700">
               Favorite Items
             </h3>
 
             {favoriteItems.length === 0 ? (
-              <div className="rounded-xl border border-dashed border-slate-200 bg-slate-50 px-4 py-8 text-center">
+              <div className="rounded-xl border border-dashed border-slate-400 bg-slate-50 px-4 py-8 text-center">
                 <p className="font-semibold text-slate-700">No favorites yet</p>
                 <p className="mt-2 text-sm text-slate-500">
                   Click the heart icon on any item to add it to your favorites
@@ -205,7 +223,7 @@ function App() {
                 {favoriteItems.map((item) => (
                   <div
                     key={item.id}
-                    className="grid grid-cols-[auto,1fr,auto] items-center gap-3 rounded-xl border border-slate-100 p-2"
+                    className="grid grid-cols-[auto,1fr,auto] items-center gap-3 rounded-xl border border-slate-300 p-2"
                   >
                     <img
                       src={item.image}
@@ -236,7 +254,7 @@ function App() {
               </div>
             )}
 
-            <div className="mt-5 border-t border-slate-200 pt-4">
+            <div className="mt-5 border-t border-slate-400 pt-4">
               <div className="flex items-center justify-between text-sm font-semibold text-slate-700">
                 <p>Total bids Amount</p>
                 <p>{formatCurrency(totalBidAmount)}</p>
